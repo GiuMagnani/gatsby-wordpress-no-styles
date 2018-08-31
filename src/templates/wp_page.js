@@ -1,6 +1,4 @@
-import React, { Component } from 'react'
-import styled from 'styled-components'
-// import TopNavigation from '../components/Layout/Navigation/Navigation'
+import React, { Component } from 'react';
 
 class wpPage extends Component {
   render() {
@@ -8,44 +6,23 @@ class wpPage extends Component {
       title: this.props.data.wordpressPage.title,
       content: this.props.data.wordpressPage.content,
       id: this.props.data.wordpressPage.id,
-      slug: this.props.data.wordpressPage.slug
-    }
+      slug: this.props.data.wordpressPage.slug,
+    };
 
     return (
       <div>
-        {/*<TopNavigation />*/}
-        <MainContentContainer>
+        <div>
           <h1>{pageNode.title}</h1>
           <main>
             <div dangerouslySetInnerHTML={{ __html: pageNode.content }} />
           </main>
-        </MainContentContainer>
+        </div>
       </div>
-    )
+    );
   }
 }
 
-export default wpPage
-
-const MainContentContainer = styled.main`
-  max-width: 800px;
-  margin: 50px auto;
-
-  h1 {
-    text-align: center;
-    font-weight: 700;
-    margin-bottom: 25px;
-  }
-
-  p {
-    font-size: 16px;
-    margin-bottom: 25px;
-  }
-
-  pre {
-    background-color: grey;
-  }
-`
+export default wpPage;
 
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
@@ -59,4 +36,4 @@ export const pageQuery = graphql`
       content
     }
   }
-`
+`;

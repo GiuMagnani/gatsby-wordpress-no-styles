@@ -57,6 +57,11 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           });
         });
       })
+      // Create Custom Post Type pages.
+      // allWordpressWp{CustomPostTypeName}
+      // Example: "Project" => allWordpressWpProject
+      // You must create a template .js file for the pageTemplate variable.
+      // Also, you must to adapt the GraphQL Query inside the template.
       .then(() => {
         graphql(
           `
@@ -78,7 +83,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             console.log(result.errors);
             reject(result.errors);
           }
-          // Create those pages with the wp_page.jsx template.
+          // Create those pages with the wp_project.js template.
           const pageTemplate = path.resolve(`./src/templates/wp_project.js`);
           _.each(result.data.allWordpressWpProject.edges, edge => {
             createPage({
